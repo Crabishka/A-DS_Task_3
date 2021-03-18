@@ -32,7 +32,7 @@ public class Main {
     public static boolean isQueuePalindrome(Queue<Integer> queue) {
         return recFunc(queue.size() / 2, queue);
     }
-
+// гнпг
     public static boolean recFunc(int level, Queue<Integer> queue) throws NullPointerException {
         int temp = 0;
         if (queue.size() % 2 == 1 && level == 0) queue.offer(queue.poll());
