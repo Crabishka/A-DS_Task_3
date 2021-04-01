@@ -1,27 +1,17 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Queue<Integer> q = new LinkedList<>();
-/*
-        q.offer(1);
-        q.offer(2);
-        q.offer(3);
-        q.offer(4);
-        q.offer(5);
-        q.offer(6);
-        q.offer(7);
-*/
 
-        q.offer(1);
-        q.offer(3);
-        q.offer(3);
-        q.offer(4);
-        q.offer(3);
-        q.offer(2);
-        q.offer(1);
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        for (int i = 0; i < N; i++){
+            q.add(scanner.nextInt());
+        }
 
         if (isQueuePalindrome(q)) System.out.println("yes");
         else System.out.println("no");
@@ -34,14 +24,15 @@ public class Main {
     }
 
     public static boolean isQueuePalindrome(Queue<Integer> queue) {
-        return recFunc(queue.size() / 2, queue);
+        return recFunc((queue.size() / 2) , queue);
+
     }
 
     public static boolean recFunc(int level, Queue<Integer> queue) throws NullPointerException {
         if (queue.size() < 2 ) return true;
         int temp = 0;
         if (queue.size() % 2 == 1 && level == 0) queue.offer(queue.poll());
-        else {
+        else if (level != 0){
             temp = queue.poll();
             queue.offer(temp);
         }
